@@ -1,0 +1,24 @@
+{% extends 'booking_app/layouts/base.html' %}
+
+{% load static %}
+
+{% block title %} Main Page {% endblock %}
+
+{% block css %} {% static 'css/main_page.css' %} {% endblock %}
+
+{% block content %}
+    {% if request.user.is_superuser or request.user.is_staff%}
+        <a href="{% url 'create_room' %}">Создать новый номер</a>
+    {% endif %}
+
+<ul>
+    {% for room in rooms %}
+        <li><a href="{% url 'detail_information' slug=room.slug %}">{{ room.room }}</a></li>
+        {% if request.user.is_superuser or request.user.is_staff%}
+            <a href="{% url 'delete_room' slug=room.slug %}">Удалить</a>
+            <a href="{% url 'edit_room' slug=room.slug %}">Редактировать</a>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+{% endblock %}

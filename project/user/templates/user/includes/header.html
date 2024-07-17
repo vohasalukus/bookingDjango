@@ -1,0 +1,9 @@
+<ul>
+    {% if not request.user.is_authenticated %}
+    <a href="{% url 'register' %}">Register</a>
+    <a href="{% url 'login' %}">Login</a>
+        <p>admin 111</p>
+    {% else %}
+        <a href="{% url 'logout' %}">Exit</a>
+    {% endif %}
+</ul>

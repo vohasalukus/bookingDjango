@@ -1,0 +1,28 @@
+{% extends 'user/layouts/base.html' %}
+
+{% load static %}
+
+{% block title %} Register {% endblock %}
+
+{% block css %}  {% static 'css/styles.css' %}   {% endblock %}
+
+
+{% block content %}
+<section class="container">
+    <h2>Register</h2>
+    <form method="post" class="auth-container">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="username">
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+        <div class="login">
+            {{ form.password1 }}
+            {{ form.password2 }}
+            {{ form.password.errors }}
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</section>
+{% endblock %}

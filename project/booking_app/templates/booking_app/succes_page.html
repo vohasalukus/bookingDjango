@@ -1,0 +1,10 @@
+{% extends 'booking_app/layouts/base.html' %}
+
+{% block title %} Success Page {% endblock %}
+
+{% block content %}
+    Отлично бронь успешна поставлена! Хотите вернуться на главную страницу или перейти в профиль
+    <a href="{% url 'list_of_rooms' %}">На главную</a>
+    <a href="{% url 'profile' %}">Профиль</a>
+{% endblock %}
+

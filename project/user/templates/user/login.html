@@ -1,0 +1,29 @@
+{% extends 'user/layouts/base.html' %}
+{% load static %}
+
+{% block title %} Authorization {% endblock %}
+
+{% block css %}  {% static 'css/styles.css' %}   {% endblock %}
+
+
+{% block content %}
+
+<section class="container">
+    <h2>Login</h2>
+    <form method="post" class="auth-container">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="username">
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+        <div class="login">
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+    letter-spacing: 1px;
+    padding: 2em 10%;
+    background: #2c3e50; /* Вторичный основной цвет */
+    color: #fff;
+}
+
+header h1 {
+    margin: 0;
+    user-select: none;
+}
+
+header nav {
+    display: flex;
+    gap: 1em; /* промежуток между элементами навигации */
+    a{
+        text-decoration: none;
+        color: #fff;    /* Цвет текста */
+        transition: color .3s ease;
+    }
+}
+
+header nav a:hover{
+    /* Акцентный цвет */
+    color: #78d1ff;
+
+}
+header nav a:active{
+    color: #bdc3c7;
+}
+
+@media screen and (max-width: 820px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 2em 5%;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 0.5em; /* уменьшенный промежуток между элементами навигации на маленьких экранах */
+    }
+}

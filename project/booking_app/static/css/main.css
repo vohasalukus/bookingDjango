@@ -1,0 +1,61 @@
+main{
+    width: 100%;
+    min-height: 100vh; /* занимает всю высоту экрана */
+    background-color: #bdc3c7; /* основной цвет */
+    padding: 3em 10%; /* добавим отступы, чтобы контент не прилипал к краям */
+}
+
+
+
+.room-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.room-card {
+    display: flex;
+    width: 100%;
+    max-width: 600px; /* Максимальная ширина карточки */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 80px rgba(0, 0, 0, 0.5); /* Добавляем тень */
+}
+
+.room-image {
+    flex: 0 0 50%; /* Ширина блока с изображением */
+    overflow: hidden;
+}
+
+.room-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 25px 20px;
+}
+
+.room-details {
+    flex: 1; /* Оставшееся пространство для информации о номере */
+    padding: 20px;
+}
+
+.room-details h3 {
+    margin-top: 0;
+}
+
+.room-details p {
+    margin-bottom: 8px;
+}
+
+.room-details a{
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+    transition: .3s ease;
+
+}
+
+.room-details a:hover{
+    text-decoration: underline;
+}

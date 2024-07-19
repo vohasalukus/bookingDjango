@@ -1,20 +1,25 @@
 {% extends 'booking_app/layouts/base.html' %}
 
+{% load static %}
+
 {% block title %} Detail Information {% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/detail_information.css' %}">
+{% endblock %}
 
 {% block content %}
 
-    <div>
-        <p>
-            {{ room.room }}
-        </p>
-        <p>
-            {{ room.description }}
-        </p>
-        <button>
-            <a href="{% url 'booking_room' slug=room.slug %}">Забронировать</a>
-        </button>
+<section class="room-details">
+    <h1>{{ room.room }}</h1>
+    <img src="{{ room.image.url }}" alt="{{ room.room }}" class="room-image">
+    <p class="description">{{ room.description }}</p>
+    <div class="booking-section">
+        <p class="price">Price: <strong>{{ room.price }} USD</strong></p>
+        <a href="{% url 'booking_room' slug=room.slug %}" class="btn btn-primary">📅 Book Now</a>
     </div>
+</section>
+<a href="{% url 'list_of_rooms' %}" class="btn btn-back">Back</a>
 
 {% endblock %}
 

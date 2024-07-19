@@ -1,0 +1,56 @@
+.user-profile h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+.user-bookings h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+
+.user-bookings ul li {
+    list-style: none;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.booking-item h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.booking-item p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.booking-item form {
+    margin-top: 1rem;
+}
+
+.booking-item form button {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.booking-item form button:hover {
+    background-color: #c9302c;
+}
+
+.booking-item form button:active {
+    background-color: #ff7117;
+}

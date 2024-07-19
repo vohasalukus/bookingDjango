@@ -12,5 +12,5 @@ urlpatterns = [
     path('delete-room/<slug:slug>/', delete_room, name='delete_room'),
     path('edit-room/<slug:slug>', edit_room, name='edit_room'),
     path('create-room/', create_room, name='create_room'),
-    path('cancel-booking/<int:booking_id>', cancel_booking, name='cancel_booking')
+    path('cancel-booking/<int:booking_id>', cancel_booking, name='cancel_booking'),
 ]

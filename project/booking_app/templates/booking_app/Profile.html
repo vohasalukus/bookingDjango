@@ -1,20 +1,64 @@
 {% extends 'booking_app/layouts/base.html' %}
+{% load static %}
 
 {% block title %} Profile {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
 {% block content %}
-    Ваше имя: {{ request.user.username }}
-<h2>My Bookings</h2>
-  <ul>
-    {% for booking in bookings %}
-      <li>
-        Room {{ booking.hotel_room.room}} ({{ booking.hotel_room.type_of_room }}) from {{ booking.entry_date }} to {{ booking.left_date }}
-        <form action="{% url 'cancel_booking' booking.id %}" method="post">
-          {% csrf_token %}
-          <button type="submit">Cancel</button>
-        </form>
-      </li>
-    {% endfor %}
-  </ul>
+
+{#    <section>#}
+{#        <p>Ваше имя: {{ request.user.username }}</p>#}
+{#        <h2>My Bookings</h2>#}
+{#        <div>#}
+{#            {% for booking in bookings %}#}
+{#                <div>#}
+{#                    <div>#}
+{#                        <img src="{{ booking.hotel_room.image.url }}" alt="">#}
+{#                    </div>#}
+{#                    <div>#}
+{#                        #}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </section>#}
+
+
+
+
+
+<section class="user-profile">
+    <h1>Добро пожаловать, {{ request.user.username }}!</h1>
+</section>
+
+    {# Делаем две секции для логического разделения между пользователем и букингами #}
+
+<section class="user-bookings">
+    <h2>Мои Брони:</h2>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                <article class="booking-item">
+                    <h3>{{ booking.hotel_room.room }} ({{ booking.hotel_room.get_type_of_room_display }})</h3>
+                    <p>From: {{ booking.entry_date }}</p>
+                    <p>To: {{ booking.left_date }}</p>
+                    <form action="{% url 'cancel_booking' booking.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Cancel</button>
+                    </form>
+                </article>
+            </li>
+        {% empty %}
+            <li>You have no bookings.</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<a href="{% url 'list_of_rooms' %}" class="btn btn-back">Back</a>
+
+
 {% endblock %}
 

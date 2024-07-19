@@ -1,10 +1,22 @@
 {% extends 'booking_app/layouts/base.html' %}
 
+{% load static %}
+
 {% block title %} Success Page {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/succes.css' %}">
+{% endblock %}
+
 {% block content %}
-    Отлично бронь успешна поставлена! Хотите вернуться на главную страницу или перейти в профиль
-    <a href="{% url 'list_of_rooms' %}">На главную</a>
-    <a href="{% url 'profile' %}">Профиль</a>
+<section class="success-message">
+    <h1>🎉 Congratulations!</h1>
+    <p>Your booking was successful!</p>
+    <div class="buttons">
+        <a href="{% url 'list_of_rooms' %}" class="btn btn-primary">Back to Home</a>
+        <a href="{% url 'profile' %}" class="btn btn-secondary">Go to Profile</a>
+    </div>
+    <div class="confetti"></div>
+</section>
 {% endblock %}
 

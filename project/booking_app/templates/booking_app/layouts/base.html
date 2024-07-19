@@ -1,9 +1,47 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} DEFAULT TITLE {% endblock %}</title>
-    <link rel="stylesheet" href="{% block css %} {% endblock %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+   {% block css %} <link rel="stylesheet" href="">{% endblock %}
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        main{
+            width: 100%;
+            min-height: 100vh; /* занимает всю высоту экрана */
+            background-color: #bdc3c7; /* основной цвет */
+            padding: 3em 10%; /* добавим отступы, чтобы контент не прилипал к краям */
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            margin: 1rem;
+            border: 1px solid #007bff;
+            border-radius: 25px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            color: #007bff;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-back:hover {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
 </head>
 <body>
 

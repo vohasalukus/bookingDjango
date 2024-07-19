@@ -1,0 +1,11 @@
+<div class="footer-content">
+    <p>&copy; 2024 RAS HOTEL. All rights reserved.</p>
+    <nav>
+        <a href="{% url 'list_of_rooms' %}">Home</a>
+        <a href="{% url 'profile' %}">Profile</a>
+        {% if request.user.is_superuser or request.user.is_staff %}
+            <a href="{% url 'create_room' %}">Create Room</a>
+        {% endif %}
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+</div>

@@ -1,12 +1,3 @@
-main{
-    width: 100%;
-    min-height: 100vh; /* занимает всю высоту экрана */
-    background-color: #bdc3c7; /* основной цвет */
-    padding: 3em 10%; /* добавим отступы, чтобы контент не прилипал к краям */
-}
-
-
-
 .room-cards {
     display: flex;
     flex-wrap: wrap;

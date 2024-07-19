@@ -1,14 +1,25 @@
 {% extends 'booking_app/layouts/base.html' %}
 
+{% load static %}
+
 {% block title %} Edit Room {% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/edit_room.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<h1>Edit room: {{ room.room }}</h1>
-    <form method="post">
+<section class="edit-room-form">
+    <h1>Edit Room: {{ room.room }}</h1>
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
-    
+</section>
+<a href="{% url 'list_of_rooms' %}" class="btn btn-back">Back</a>
+
 {% endblock %}

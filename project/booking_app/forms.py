@@ -7,6 +7,11 @@ class BookingForm(forms.ModelForm):
         model = Booking
         fields = ['entry_date', 'left_date']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['entry_date'].widget = forms.DateInput(attrs={'type': 'date'})
+        self.fields['left_date'].widget = forms.DateInput(attrs={'type': 'date'})
+
 
 class HotelRoomForm(forms.ModelForm):
     class Meta:

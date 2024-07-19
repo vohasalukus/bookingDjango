@@ -35,13 +35,14 @@
                 <p>{{ room.get_type_of_room_display }} 🛌</p>
                 <p>Цена: 💲 {{ room.price }}</p>
                 <p>{{ room.description|slice:'100' }}...
-                    <a href="">Просмотреть подробную информацию...</a></p>
+                    <a href="{% url 'detail_information' slug=room.slug %}">Просмотреть подробную информацию...</a></p>
                 {% if request.user.is_superuser or request.user.is_staff%}
                     <a href="{% url 'edit_room' slug=room.slug %}">Редактировать</a>
                     <a href="{% url 'delete_room' slug=room.slug %}">Удалить</a>
                 {% endif %}
-
             </div>
+        {% empty %}
+        <p>We have no rooms. Sorry! (it cant be at all)</p>
         </div>
         {% endfor %}
     </div>

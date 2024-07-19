@@ -1,12 +1,25 @@
 {% extends 'booking_app/layouts/base.html' %}
 
+{% load static %}
+
 {% block title %} Create room {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/creating_room.css' %}">
+{% endblock %}
+
 {% block content %}
-    <h1>Creating New Room</h1>
+<section class="form-container">
+    <h1>Create New Room</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        <fieldset>
+            <legend>Room Details</legend>
+            {{ form.as_p }}
+        </fieldset>
         <button type="submit">Save</button>
     </form>
+</section>
+<a href="{% url 'list_of_rooms' %}" class="btn btn-back">Back</a>
+
 {% endblock %}

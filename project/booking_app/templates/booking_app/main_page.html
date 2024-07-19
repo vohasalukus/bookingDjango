@@ -4,21 +4,55 @@
 
 {% block title %} Main Page {% endblock %}
 
-{% block css %} {% static 'css/main_page.css' %} {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
 
 {% block content %}
-    {% if request.user.is_superuser or request.user.is_staff%}
-        <a href="{% url 'create_room' %}">Создать новый номер</a>
-    {% endif %}
 
-<ul>
-    {% for room in rooms %}
-        <li><a href="{% url 'detail_information' slug=room.slug %}">{{ room.room }}</a></li>
-        {% if request.user.is_superuser or request.user.is_staff%}
-            <a href="{% url 'delete_room' slug=room.slug %}">Удалить</a>
-            <a href="{% url 'edit_room' slug=room.slug %}">Редактировать</a>
-        {% endif %}
-    {% endfor %}
-</ul>
+{#<section>#}
+{#    <div>#}
+{#        {% for room in rooms %}#}
+{#            <p>{{ room.room }}</p>#}
+{#            <p>{{ room.get_type_of_room_display }}</p>  {# get_type_of_room_display - Получаем не системное значение #}
+{#            <p> $ {{ room.price }}</p>#}
+{#            <p>{{ room.description }}</p>#}
+{#            <img src="{{ room.image.url }}" alt="">#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#</section>#}
+
+
+<section>
+    <div class="room-cards">
+        {% for room in rooms %}
+        <div class="room-card">
+            <div class="room-image">
+                <img src="{{ room.image.url }}" alt="{{ room.room }}">
+            </div>
+            <div class="room-details">
+                <h3><a href="{% url 'detail_information' slug=room.slug %}">{{ room.room }}</a></h3>
+                <p>{{ room.get_type_of_room_display }} 🛌</p>
+                <p>Цена: 💲 {{ room.price }}</p>
+                <p>{{ room.description|slice:'100' }}...
+                    <a href="">Просмотреть подробную информацию...</a></p>
+                {% if request.user.is_superuser or request.user.is_staff%}
+                    <a href="{% url 'edit_room' slug=room.slug %}">Редактировать</a>
+                    <a href="{% url 'delete_room' slug=room.slug %}">Удалить</a>
+                {% endif %}
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+{#<ul class="test">#}
+{#    {% for room in rooms %}#}
+{#        <li><a href="{% url 'detail_information' slug=room.slug %}">{{ room.room }}</a></li>#}
+{#    {% endfor %}#}
+{#</ul>#}
 
 {% endblock %}
